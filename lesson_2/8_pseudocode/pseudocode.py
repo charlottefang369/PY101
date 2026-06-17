@@ -25,14 +25,14 @@
 
 # Casual:
 # Given a list of strings.
-# Start with an empty result string.
+# Start with an empty string called result.
 # For each string in the list, add it to the result string.
-# Return the result string.
+# Return result.
 
 # Formal: 
 # START
 
-# Given a list of strings called strings
+# # Given a list of strings called strings
 
 # SET result = empty string
 # SET iterator = 0
@@ -56,15 +56,15 @@
 
 # Casual:
 # Given a list of integers
-# Start with an empty result list.
+# Start with an empty list called result.
 # Starting from the first element in the original list, if the index of the 
 # integer is even, add it to the result list; if the index is odd, skip it. 
-# Return the result list.
+# Return result.
 
 # Formal: 
 # START 
 
-# Given a list of integers called numbers 
+# # Given a list of integers called numbers 
 
 # SET result = empty list
 # SET iterator = 0
@@ -94,14 +94,14 @@
 # Given a string and a character.
 # Start with the first character of the string from left and compare each 
 # character of the string to the given character. 
-# Track and count the number of the time matched. 
+# Track and count the number of the time when matched. 
 # When the count reaches 3, return the index of the current character
 # If that total number is less than 3, return None 
 
 # Formal: 
 # START 
 
-# Given a string called my_string and a character called char.
+# #Given a string called my_string and a character called char.
 
 # SET count = 0
 # SET iterator = 0 
@@ -131,8 +131,8 @@
 # Casual:
 # Given two lists of numbers: list1 and list2.
 # Start with an empty list called result. 
-# Add the first element of list1 to result and add the frist element of list2 
-# to the result. Then add the second element of list1 to result and add the
+# Add the first element of list1 to result. Then add the first element of list2 
+# to the result. Then add the second element of list1 to result. Thne add the
 # second element of list2 to the result. Continue this process until exhaust 
 # both list1 and list2. 
 # Return the result list. 
@@ -140,7 +140,7 @@
 # Formal: 
 # START 
 
-# Given two lists of numbers: list1 and list2.
+# #Given two lists of numbers: list1 and list2.
 
 # SET result = empty list
 # SET iterator = 0
