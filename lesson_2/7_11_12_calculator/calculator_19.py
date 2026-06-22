@@ -43,6 +43,7 @@ while operation not in ["1", "2", "3", "4"]:
     prompt("You must choose 1, 2, 3, or 4")
     operation = input()
 
+
 match operation:
     case "1":
         output = int(number1) + int(number2)
@@ -53,4 +54,14 @@ match operation:
     case "4":
         output = int(number1) / int(number2)
 
-prompt(f"The result is {output}")
+prompt(f"The result is {output} \n Would you like to perform another calculation? (Y/N)")
+another_calculation = input()
+
+while another_calculation not in ['Y', 'N']:
+    prompt("Please enter Y or N")
+    another_calculation = input()
+
+If another_calculation == 'Y':
+    # Restart the program
+else:
+    prompt("Thanks for using Calculator! Goodbye!")
