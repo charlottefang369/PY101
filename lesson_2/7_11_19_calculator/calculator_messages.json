@@ -1,0 +1,25 @@
+{
+    "en": {
+        "welcome": "Welcome to Calculator!",
+        "invalid_number": "Hmm... that doesn't look like a valid number.",
+        "number_prompt_1": "Please enter the first number:",
+        "number_prompt_2": "Please enter the second number:",
+        "operation_prompt": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+        "invalid_operation": "You must choose 1, 2, 3, or 4",
+        "another_operation": "Would you like to perform another calculation? (y/n)",
+        "result": "The result is {output}",
+        "invalid_answer": "Please enter y or n"
+    },
+    "ch":{
+        "welcome": "欢迎使用计算器",
+        "invalid_number": "这个不像是正确的哦",
+         "number_prompt_1": "请输入第一个数字：",
+         "number_prompt_2": "请输入第二个数字：",
+        "operation_prompt": "请问您想使用哪种计算方式？\n1) 加法 2) 减法 3) 乘法 4) 除法",
+        "invalid_operation": "您必须在 1, 2, 3, 或者 4中间选一个。",
+        "another_operation": "你还想再玩一次吗 (y/n)",
+        "result": "计算结果是 {output}",
+        "invalid_answer": "请输入 y or n"
+    }
+}
+    
