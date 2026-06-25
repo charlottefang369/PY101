@@ -1,0 +1,11 @@
+{
+    "welcome": "Welcome to this fabulous mortgage calculator!",
+    "loan_amount": "What is the loan amount? ",
+    "invalid_number": "Must enter a positive number.",
+    "apr": "What is the Annual Percentage Rate (APR).",
+    "apr_example": "For example, please enter 6.51 for 6.51%. For no-interest rate, please enter 0",
+    "duration_in_years": "What is the loan duration (in years)?",
+    "duration_in_years_example": "For example, please enter 30 for 30 years.",
+    "result": "Your monthly payment is ${monthly_payment:,.2f}",
+    "another_calculation": "Would you like to perform another calculation? (y/n)"
+}

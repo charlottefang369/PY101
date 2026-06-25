@@ -14,6 +14,7 @@
 # Other: 
 #       Run your code through Pylint and ask for code review if needed 
 #       Edge cases: 
+#               negative numbers 
 #               no-interest loans: monthly_interest_rate = ''
 #               loans that might be payable over a period of time that is not 
 #               an integer number of years (e.g 2.5 years/30 months).

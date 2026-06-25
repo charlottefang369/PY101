@@ -1,9 +1,0 @@
-{
-    "welcome": "Welcome to this fabulous mortgage calculator!",
-    "loan_amount": "What is your loan amount? ",
-    "invalid_message": "This does not look like a valid entry.",
-    "apr": "What is your Annual Percentage Rate (APR). For example, please enter 6.51 for 6.51%.",
-    "duration_in_years": "What is your loan duration in years. For example, please enter 30 for 30 years.",
-    "result": "Your monthly payment is {output}",
-    "another_calculation": "Would you like to perform another calculation? (y/n)"
-}
