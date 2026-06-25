@@ -120,5 +120,5 @@ while True:
 
         prompt(messages('invalid_answer'))
     
-    if answer == 'n':
+    if answer[0] == 'n':
         break 
