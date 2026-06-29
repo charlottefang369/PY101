@@ -2,88 +2,105 @@ import random
 
 VALID_CHOICES = ['r', 'p', 'sc', 'l', 'sp']
 
-VALID_CHOICES_DETAIL = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+CHOICE_MAP = {
+    'r':  'rock',
+    'p':  'paper',
+    'sc': 'scissors',
+    'l':  'lizard',
+    'sp': 'spock',
+}
+
+WINNING_COMBOS = {
+    'rock':     ['scissors', 'lizard'],
+    'paper':    ['rock',     'spock'],
+    'scissors': ['paper',    'lizard'],
+    'lizard':   ['paper',    'spock'],
+    'spock':    ['rock',     'scissors'],
+}
 
 def prompt(message):
     print(f'==> {message}')
 
-def display_winner(player, computer):
-    if ((player == 'rock' and computer == 'scissors') or
-        (player == 'rock' and computer == 'lizard') or
-        (player == 'paper' and computer == 'spock') or
-        (player == 'paper' and computer == 'rock') or
-        (player == 'scissors' and computer == 'paper') or
-        (player == 'scissors' and computer == 'lizard') or
-        (player == 'spock' and computer == 'scissors') or
-        (player == 'spock' and computer == 'rock') or
-        (player == 'lizard' and computer == 'spock') or
-        (player == 'lizard' and computer == 'paper')):
-        prompt ('You win!')
-    elif player == computer: 
-        prompt ('It is a tie!')
-    else: 
-        prompt ('Computer wins!')
+def display_welcome_message():
+    prompt('Welcome to Rock, Paper, Scissors, Lizard, Spock!')
+    prompt('First to 3 wins takes the match. Good luck!')
 
-user_scores = 0
-computer_scores = 0
+def display_goodbye_message():
+    prompt('Thanks for playing. Goodbye!')
 
-while True:
-    while True: 
-        prompt('Choose one: "r" for rock, "p" for paper,'
-               '"sc" for scissors,"l" for lizard, "sp" for spock')
-        choice = input()
-        
+def get_choice():
+    while True:
+        prompt('Choose one: '
+               '"r" for rock, "p" for paper, "sc" for scissors, "l" for lizard, "sp" for spock') 
+        choice = input().lower().strip()
         if choice in VALID_CHOICES:
-            break 
+            return CHOICE_MAP[choice]
 
-        prompt("That is not a valid player")
-    
-    computer_choice = random.choice(VALID_CHOICES)
+        prompt("That is not a valid choice")
 
-    for valid_choice in VALID_CHOICES_DETAIL: 
-        if valid_choice.startswith(choice):
-            choice = valid_choice 
-        if valid_choice.startswith(computer_choice):
-            computer_choice = valid_choice 
+def get_computer_choice():
+    return CHOICE_MAP[random.choice(VALID_CHOICES)]
 
-    prompt(f'You chose {choice}, computer chose {computer_choice}')
-  
-    display_winner(choice, computer_choice)
+def player_wins(player, computer):
+    return computer in WINNING_COMBOS[player]
 
-    if ((choice == 'rock' and computer_choice == 'scissors') or
-        (choice == 'rock' and computer_choice == 'lizard') or
-        (choice == 'paper' and computer_choice == 'spock') or
-        (choice == 'paper' and computer_choice == 'rock') or
-        (choice == 'scissors' and computer_choice == 'paper') or
-        (choice == 'scissors' and computer_choice == 'lizard') or
-        (choice == 'spock' and computer_choice == 'scissors') or
-        (choice == 'spock' and computer_choice == 'rock') or
-        (choice == 'lizard' and computer_choice == 'spock') or
-        (choice == 'lizard' and computer_choice == 'paper')):
-        user_scores = user_scores + 1
-    elif choice == computer_choice: 
-        pass
+def display_winner(player, computer):
+    if player_wins(player, computer):
+        prompt('You win!')
+    elif player == computer: 
+        prompt('It is a tie!')
     else: 
-        computer_scores = computer_scores +1
-    
-    if user_scores == 3:
-        prompt('You are the grand winner!')
-    elif computer_scores == 3:
-        prompt('Computer is the grand winner!')
+        prompt('Computer wins!')
 
-
-    #Allow Y/N, y/n, Yes/No, YES/NO
-    while True: 
-        prompt ('Do you want to play again (y/n)?')
-        answer = input().lower()
-
-        #Using and operator's short circuit behavior to fliter out empty string 
-        if answer and answer[0] in ['y', 'n']:  
-            break 
-
+def play_again():
+    while True:
+        prompt('Do you want to restart the game (y/n)?')
+        answer = input().lower().strip()
+        
+        if answer and answer[0] in ['y', 'n']:
+            return answer[0] == 'y'
+        
         prompt('Please enter "y" or "n".')
+
+def play_rps():
+    user_scores = 0
+    computer_scores = 0
+   
+    display_welcome_message()
+
+    while True:
+        player = get_choice()
+        computer = get_computer_choice()
+
+        prompt(f'You chose {player}, computer chose {computer}')
+
+        display_winner(player, computer)
+
+        if player_wins(player, computer):
+            user_scores += 1
+        elif player != computer:
+            computer_scores += 1
+
+        prompt(f'Score - You: {user_scores} | Computer: {computer_scores}')
+
+        if user_scores == 3:
+            prompt('You are the grand winner!')
+        elif computer_scores == 3:
+            prompt('Computer is the grand winner!')
+        
+        if user_scores == 3 or computer_scores == 3:
+            if play_again():
+                user_scores = 0
+                computer_scores = 0
+                display_welcome_message()
+            else:
+                display_goodbye_message()
+                break
+
+play_rps()
+
+
+
     
-    #Break if the user doesn't want to play again 
-    if answer[0] == 'n':
-        break 
+
     
