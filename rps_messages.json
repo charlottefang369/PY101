@@ -1,0 +1,16 @@
+ {
+     "welcome_1": "Welcome to Rock, Paper, Scissors, Lizard, Spock!",
+     "welcome_2": "First to 3 wins takes the match. Good luck!",
+     "goodbye": "Thanks for playing. Goodbye!",
+     "start_prompt": "Choose one: 'r' for rock, 'p' for paper, 'sc' for scissors, 'l' for lizard, 'sp for spock",
+     "invalid_choice": "That is not a valid choice.",
+     "win_user": "You win!",
+     "tie": "It is a tie!",
+     "win_computer": "Computer wins!",
+     "play_again": "Would you like to play again? (y/n)",
+     "invalid_answer": "Please enter 'y' or 'n'.",
+     "choices": "You chose {player}, computer chose {computer}", 
+     "scores": "f'Score - You: {user_scores} | Computer: {computer_scores}'",
+     "grand_winner_user": "You are the grand winner!",
+     "grand_winner_computer": "Computer is the grand winner!"
+ }

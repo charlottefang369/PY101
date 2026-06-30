@@ -1,5 +1,11 @@
 import random 
 
+import json 
+
+with open ('rps_messages.json', 'r') as file:  
+    MESSAGES = json.load(file)      #Assign MESSAGES with all the messages in rps_messages_json file.
+
+
 VALID_CHOICES = ['r', 'p', 'sc', 'l', 'sp']
 
 CHOICE_MAP = {
@@ -18,25 +24,28 @@ WINNING_COMBOS = {
     'spock':    ['rock',     'scissors'],
 }
 
+
+def message(message_key):
+    return MESSAGES[message_key]        #use message as key to look up messages in MESSAGE
+
 def prompt(message):
-    print(f'==> {message}')
+    print(f'==> {message}')             #Prefix ==> to each message 
 
 def display_welcome_message():
-    prompt('Welcome to Rock, Paper, Scissors, Lizard, Spock!')
-    prompt('First to 3 wins takes the match. Good luck!')
+    prompt(message('welcome_1'))
+    prompt(message('welcome_2'))
 
 def display_goodbye_message():
-    prompt('Thanks for playing. Goodbye!')
+    prompt(message('goodbye'))
 
 def get_choice():
     while True:
-        prompt('Choose one: '
-               '"r" for rock, "p" for paper, "sc" for scissors, "l" for lizard, "sp" for spock') 
+        prompt(message('instruction')) 
         choice = input().lower().strip()
         if choice in VALID_CHOICES:
             return CHOICE_MAP[choice]
 
-        prompt("That is not a valid choice")
+        prompt(message('invalid_choice')) 
 
 def get_computer_choice():
     return CHOICE_MAP[random.choice(VALID_CHOICES)]
@@ -46,47 +55,48 @@ def player_wins(player, computer):
 
 def display_winner(player, computer):
     if player_wins(player, computer):
-        prompt('You win!')
+        prompt(message('win_user')) 
     elif player == computer: 
-        prompt('It is a tie!')
+        prompt(message('tie')) 
     else: 
-        prompt('Computer wins!')
+        prompt(message('win_computer')) 
 
 def play_again():
     while True:
-        prompt('Do you want to restart the game (y/n)?')
+        prompt(message('play_again')) 
         answer = input().lower().strip()
         
         if answer and answer[0] in ['y', 'n']:
             return answer[0] == 'y'
         
-        prompt('Please enter "y" or "n".')
+        prompt(message('invalid_answer')) 
 
 def play_rps():
-    user_scores = 0
-    computer_scores = 0
    
     display_welcome_message()
+
+    user_scores = 0
+    computer_scores = 0
 
     while True:
         player = get_choice()
         computer = get_computer_choice()
 
-        prompt(f'You chose {player}, computer chose {computer}')
-
-        display_winner(player, computer)
+        prompt(message('choices').format(player=player, computer=computer)) 
 
         if player_wins(player, computer):
             user_scores += 1
         elif player != computer:
             computer_scores += 1
 
-        prompt(f'Score - You: {user_scores} | Computer: {computer_scores}')
+        display_winner(player, computer)
+
+        prompt(message('scores').format(user_scores=user_scores, computer_scores=computer_scores))
 
         if user_scores == 3:
-            prompt('You are the grand winner!')
+            prompt(message('grand_winner_user'))
         elif computer_scores == 3:
-            prompt('Computer is the grand winner!')
+            prompt(message('grand_winner_computer'))
         
         if user_scores == 3 or computer_scores == 3:
             if play_again():
